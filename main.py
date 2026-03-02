@@ -4,8 +4,8 @@ import random
 import datetime as dt
 import smtplib
 
-my_email = os.environ.get("MY_EMAIL")
-my_password = os.environ.get("MY_PASSWORD")
+MY_EMAIL = os.environ.get("MY_EMAIL")
+MY_PASSWORD = os.environ.get("MY_PASSWORD")
 
 now = dt.datetime.now()
 
@@ -26,9 +26,9 @@ if not matches.empty:
     # 4. Send the letter generated in step 3 to that person's email address.
     with smtplib.SMTP("smtp.gmail.com") as connection:
         connection.starttls()
-        connection.login(user=my_email, password=my_password)
+        connection.login(user=MY_EMAIL, password=MY_PASSWORD)
         connection.sendmail(
-            from_addr=my_email,
+            from_addr=MY_EMAIL,
             to_addrs=matches['email'].item(),
             msg=f"Subject:Happy Birthday\n\n{updated_content}"
         )
